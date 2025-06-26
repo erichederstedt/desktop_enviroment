@@ -1,0 +1,12 @@
+*.o
+dwm/dwm
+dmenu/dmenu
+dmenu/stest
+slstatus/slstatus
+st/st
+tcc/c2str.exe
+tcc/libtcc.a
+tcc/libtcc1.a
+tcc/tcc
+tcc/tcc.1
+tcc/tccdefs_.h
