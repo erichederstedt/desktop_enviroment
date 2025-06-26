@@ -55,4 +55,4 @@ picom -f &
 setxkbmap se &
 slstatus &
 
-exec dwm
+exec startdwm

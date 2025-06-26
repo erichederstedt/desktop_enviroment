@@ -34,3 +34,5 @@ if [ -f ~/.xinitrc ]; then
 fi
 ln -sv ~/.xinitrc ./xinitrc
 chmod +x ~/.xinitrc
+sudo ln -sv /usr/bin/startdwm ./startdwm
+chmod +x /usr/bin/startdwm
