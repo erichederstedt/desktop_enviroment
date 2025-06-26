@@ -64,7 +64,16 @@ static const char unknown_str[] = "n/a";
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
  * wifi_perc           WiFi signal in percent          interface name (wlan0)
  */
+
+static const char nm_wifi_ssid[] = "nmcli d show wlp1s0 | grep 'GENERAL.CONNECTION:' | awk '{print $2}'";
+
 static const struct arg args[] = {
 	/* function format          argument */
-	{ datetime, "%s",           "%F %T" },
+	{ datetime,	"%s | ",	"DATE:%F | TIME:%T" },
+	{ run_command,  "SSID:%s | ",   nm_wifi_ssid },
+	{ wifi_perc,	"SIG:%s%% | ",	"wlp1s0" },
+	{ cpu_perc,	"CPU:%s%% | ",	NULL },
+	{ ram_perc,	"RAM:%s%% | ",	NULL },
+	{ battery_perc,	"BAT:%s%%",	"BAT0" },
+	{ battery_state,"(%s)",		"BAT0" },
 };
