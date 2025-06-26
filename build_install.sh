@@ -26,6 +26,9 @@ popd
 
 echo "Building slstatus"
 pushd slstatus
+if ! [ -f "config.h" ]; then
+	cp example.config.h config.h
+fi
 sudo make clean install
 popd
 
