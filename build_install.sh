@@ -1,38 +1,44 @@
-??? from here until ???END lines may have been inserted/deleted
 #!/usr/bin/bash
 
+pushd $(pwd)
+
 echo "Building TCC"
-cd tcc
+pushd tcc
 ./configure
 sudo make
 sudo make install
-cd ..
+popd
 
 echo "Building dwm"
-cd dwm
+pushd dwm
 sudo make clean install
-cd ..
+popd
 
 echo "Building dmenu"
-cd dmenu
+pushd dmenu
 sudo make clean install
-cd ..
+popd
 
 echo "Building st"
-cd st
+pushd st
 sudo make clean install
-cd ..
+popd
 
 echo "Building slstatus"
-cd slstatus
+pushd slstatus
 sudo make clean install
-cd ..
+popd
 
 echo "Linking xinitrc"
-if [ -f ~/.xinitrc ]; then
-	rm ~/.xinitrc
+if ! [ -f "$HOME/.xinitrc" ]; then
+	ln -sv "$(pwd)/xinitrc" "$HOME/.xinitrc"
+	chmod +x "$HOME/.xinitrc"
 fi
-ln -sv ~/.xinitrc ./xinitrc
-chmod +x ~/.xinitrc
-sudo ln -sv /usr/bin/startdwm ./startdwm
-chmod +x /usr/bin/startdwm
+
+echo "Linking startdwm"
+if ! [ -f "/usr/bin/startdwm" ]; then
+	sudo ln -sv "$(pwd)/startdwm" /usr/bin/startdwm
+	sudo chmod +x /usr/bin/startdwm
+fi
+
+popd
