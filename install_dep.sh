@@ -3,7 +3,7 @@
 sudo xbps-install -u xbps
 sudo xbps-install -Su
 
-sudo xbps-install dbus polkit elogind xorg libXft-devel libXinerama-devel base-devel libX11-devel nitrogen NetworkManager
+sudo xbps-install dbus polkit elogind xorg libXft-devel libXinerama-devel base-devel libX11-devel nitrogen NetworkManager github-cli
 
 sudo touch /etc/sv/acpid/down
 sudo touch /etc/sv/dhcpcd/down
